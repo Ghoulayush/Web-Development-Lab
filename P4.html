@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Window Object Functions</title>
+    <script>
+      function showAlert() {
+        window.alert("This is an Alert Box!");
+      }
+
+      function showPrompt() {
+        let name = window.prompt("Enter your name:");
+        if (name != null)
+          document.getElementById("output").innerHTML = "Hello " + name;
+      }
+
+      function showConfirm() {
+        let result = window.confirm("Do you like JavaScript?");
+        if (result)
+          document.getElementById("output").innerHTML = "Great! Keep learning.";
+        else
+          document.getElementById("output").innerHTML =
+            "No worries, practice makes perfect!";
+      }
+      function openWindow() {
+        window.open("https://www.google.com", "_blank");
+      }
+
+      function showTimeout() {
+        window.setTimeout(function () {
+          alert("This alert appears after 3 seconds!");
+        }, 3000);
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Predefined Functions of Window Object</h2>
+    <button onclick="showAlert()">Alert</button>
+    <button onclick="showPrompt()">Prompt</button>
+    <button onclick="showConfirm()">Confirm</button>
+    <button onclick="openWindow()">Open New Window</button>
+    <button onclick="showTimeout()">setTimeout</button>
+    <p id="output"></p>
+  </body>
+</html>

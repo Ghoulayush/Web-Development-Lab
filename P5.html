@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Change Background Color</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 150px;
+        border: 2px solid black;
+        display: inline-block;
+        margin: 20px;
+        text-align: center;
+        padding-top: 40px;
+      }
+    </style>
+    <script>
+      function changeColor(divId, color) {
+        document.getElementById(divId).style.backgroundColor = color;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Click the Button to Change Div Color</h2>
+    <div id="box1" class="box">
+      <button onclick="changeColor('box1', 'red')">Red</button>
+    </div>
+    <div id="box2" class="box">
+      <button onclick="changeColor('box2', 'green')">Green</button>
+    </div>
+    <div id="box3" class="box">
+      <button onclick="changeColor('box3', 'blue')">Blue</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Program 2</title>
+  </head>
+  <body>
+    <h2>FRAMES AND FORMS</h2>
+    <div id="input" style=" border: solid black 3px; width: 50%; height: 50%; border-radius: 10px;">
+      <form onsubmit="functionforoutput();return false;">
+        <label for="firstname">FIRST NAME : </label>
+        <input type="text" name="firstname" id="firstname" placeholder="firstname"required/>
+        <br /><br />
+        <label for="lastname">LAST NAME : </label>
+        <input type="text" name="lastname" id="lastname" placeholder="lastname" required/>
+        <br /><br />
+        <label>GENDER : </label>
+        <label for="male">MALE</label>
+        <input type="radio" name="gender" id="male" value="MALE" required />
+        <label for="female">FEMALE</label>
+        <input type="radio" name="gender" id="female" value="FEMALE"/><br /><br />
+        <label for="email">EMAIL : </label>
+        <input type="email" name="email" id="email" required /><br /><br />
+        <label for="dob">DATE OF BIRTH</label>
+        <input type="date" name="dob" id="dob" required /><br /><br />
+        <label for="addr">ADDRESS</label>
+        <input type="text" name="addr" id="addr" required /><br /><br />
+        <input type="submit" name="submit" id="submit" /><br /><br />
+      </form>
+    </div>
+    <div id="output"></div>
+    <script>
+      function functionforoutput() {
+        let fname = document.getElementById("firstname").value;
+        let lname = document.getElementById("lastname").value;
+        let email = document.getElementById("email").value;
+        let dob = document.getElementById("dob").value;
+        let addr = document.getElementById("addr").value;
+        let gender;
+        let genders = document.getElementsByName("gender");
+        for (let i = 0; i < genders.length; ++i) {
+          if (genders[i].checked) {
+            gender = genders[i].value;
+          }
+        }
+        document.getElementById("output").innerHTML =
+          "<hr> ENTERED VALUE <br>" +
+          "<p>FIRST NAME : " +
+          fname +
+          "</p>" +
+          "<p>LAST NAME : " +
+          lname +
+          "</p>" +
+          "<p>EMAIL : " +
+          email +
+          "</p>" +
+          "<p>DATE OF BIRTH : " +
+          dob +
+          "</p>";
+        alert("FORM HAS BEEN SUBMITTED SUCCESSFULLY !! THANKS");
+      }
+    </script>
+  </body>
+</html>
