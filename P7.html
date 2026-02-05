@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Age Category</title>
+  </head>
+  <body>
+    <h1>Age Category Checker</h1>
+    <p>Check the browser console (F12 > Console) for the result.</p>
+    <p id="result"></p>
+
+    <script>
+      var age = parseInt(prompt("Enter your age:"));
+      var category;
+
+      switch(true){
+        case(age < 13):
+            category = "Category: Child";
+            break;
+        case(age >= 13 && age < 18):
+            category = "Category: Teenager";
+            break;
+        case(age >= 18 && age < 60):
+            category = "Category: Adult";
+            break;
+        default:
+            category = "Category: Senior Citizen";
+      }
+
+      console.log(category);
+      document.getElementById("result").innerText = category;
+    </script>
+  </>
+</>
