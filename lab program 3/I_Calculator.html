@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+    <style>
+      body {
+        font-family: Arial;
+        background-color: white;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .container {
+        margin: 20px;
+        border: 1px solid black;
+        padding: 20px;
+        width: 400px;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      input {
+        width: 300px;
+        padding: 5px;
+        margin-top: 5px;
+      }
+
+      select {
+        width: 310px;
+        padding: 5px;
+        margin-top: 5px;
+      }
+
+      button {
+        padding: 8px 15px;
+        margin-top: 10px;
+        background-color: green;
+        color: white;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+
+      .result-box {
+        margin-top: 20px;
+        border: 1px solid black;
+        padding: 10px;
+      }
+
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+
+    <div class="container">
+      <label for="num1">First Number:</label>
+      <input type="number" id="num1" />
+
+      <label for="num2">Second Number:</label>
+      <input type="number" id="num2" />
+
+      <label for="operation">Operation:</label>
+      <select id="operation">
+        <option value="add">Addition (+)</option>
+        <option value="subtract">Subtraction (-)</option>
+        <option value="multiply">Multiplication (*)</option>
+        <option value="divide">Division (/)</option>
+      </select>
+
+      <br />
+      <button onclick="calculateResult()">Calculate</button>
+      <button onclick="clearFields()">Clear</button>
+
+      <div class="result-box">
+        <h3>Result:</h3>
+        <div id="output">0</div>
+        <div id="errorMsg"></div>
+      </div>
+    </div>
+
+    <script>
+      function add(a, b) {
+        return a + b;
+      }
+      function subtract(a, b) {
+        return a - b;
+      }
+      function multiply(a, b) {
+        return a * b;
+      }
+      function divide(a, b) {
+        return a / b;
+      }
+      function calculateResult() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var operation = document.getElementById("operation").value;
+        var result = 0;
+        var error = document.getElementById("errorMsg");
+
+        error.innerHTML = "";
+
+        if (isNaN(num1) || isNaN(num2)) {
+          error.innerHTML = "<p class='error'>Enter both numbers</p>";
+          document.getElementById("output").innerHTML = "0";
+          return;
+        }
+
+        if (operation === "add") {
+          result = add(num1, num2);
+        } else if (operation === "subtract") {
+          result = subtract(num1, num2);
+        } else if (operation === "multiply") {
+          result = multiply(num1, num2);
+        } else if (operation === "divide") {
+          if (num2 === 0) {
+            error.innerHTML = "<p class='error'>Cannot divide by zero</p>";
+            document.getElementById("output").innerHTML = "0";
+            return;
+          }
+          result = divide(num1, num2);
+        }
+
+        document.getElementById("output").innerHTML = result;
+      }
+
+      function clearFields() {
+        document.getElementById("num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("operation").value = "add";
+        document.getElementById("output").innerHTML = "0";
+        document.getElementById("errorMsg").innerHTML = "";
+      }
+
+      document.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          calculateResult();
+        }
+      });
+    </script>
+  </body>
+</html>

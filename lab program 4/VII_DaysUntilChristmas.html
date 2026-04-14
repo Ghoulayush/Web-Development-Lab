@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program VII</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        width: 420px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program VII</h2>
+    <div class="box">
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function daysToChristmas() {
+        var today = new Date();
+        var christmas = new Date(today.getFullYear(), 11, 25);
+        if (today > christmas)
+          christmas = new Date(today.getFullYear() + 1, 11, 25);
+        var oneDay = 1000 * 60 * 60 * 24;
+        var diff = Math.ceil((christmas - today) / oneDay);
+        document.getElementById("result").innerHTML =
+          "Days left until Christmas: " + diff;
+      }
+
+      daysToChristmas();
+    </script>
+  </body>
+</html>

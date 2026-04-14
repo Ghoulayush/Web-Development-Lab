@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program VIII</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        width: 420px;
+      }
+      input,
+      button {
+        padding: 5px;
+        margin-top: 5px;
+      }
+      button {
+        border: 1px solid black;
+        background: lightgray;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program VIII</h2>
+    <div class="box">
+      <p>Days remaining for birthday</p>
+      <input type="number" id="month" placeholder="Month (1-12)" />
+      <input type="number" id="day" placeholder="Day" />
+      <button onclick="countBirthday()">Count</button>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function countBirthday() {
+        var m = parseInt(document.getElementById("month").value) - 1;
+        var d = parseInt(document.getElementById("day").value);
+        var today = new Date();
+        var b = new Date(today.getFullYear(), m, d);
+        if (today > b) b = new Date(today.getFullYear() + 1, m, d);
+        var oneDay = 1000 * 60 * 60 * 24;
+        var diff = Math.ceil((b - today) / oneDay);
+        document.getElementById("result").innerHTML =
+          "Days left for birthday: " + diff;
+      }
+    </script>
+  </body>
+</html>

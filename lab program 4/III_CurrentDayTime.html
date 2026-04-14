@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program III</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        width: 420px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program III</h2>
+    <div class="box">
+      <p id="dayText"></p>
+      <p id="timeText"></p>
+    </div>
+
+    <script>
+      function showTime() {
+        var days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        var now = new Date();
+        var h = now.getHours();
+        var m = now.getMinutes();
+        var s = now.getSeconds();
+        var ampm = h >= 12 ? "PM" : "AM";
+        h = h % 12;
+        if (h === 0) h = 12;
+        if (m < 10) m = "0" + m;
+        if (s < 10) s = "0" + s;
+        document.getElementById("dayText").innerHTML =
+          "Today is: " + days[now.getDay()] + ".";
+        document.getElementById("timeText").innerHTML =
+          "The current time is : " + h + " " + ampm + " : " + m + " : " + s;
+      }
+
+      showTime();
+      setInterval(showTime, 1000);
+    </script>
+  </body>
+</html>

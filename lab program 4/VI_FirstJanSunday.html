@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program VI</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        width: 420px;
+      }
+      input,
+      button {
+        padding: 5px;
+        margin-top: 5px;
+      }
+      button {
+        border: 1px solid black;
+        background: lightgray;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program VI</h2>
+    <div class="box">
+      <p>Find 1st January Sunday between two years</p>
+      <input type="number" id="year1" placeholder="Start year" />
+      <input type="number" id="year2" placeholder="End year" />
+      <button onclick="findSunday()">Find</button>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function findSunday() {
+        var y1 = parseInt(document.getElementById("year1").value);
+        var y2 = parseInt(document.getElementById("year2").value);
+        var ans = "Not found";
+        for (var y = y1; y <= y2; y++) {
+          if (new Date(y, 0, 1).getDay() === 0) {
+            ans = y;
+            break;
+          }
+        }
+        document.getElementById("result").innerHTML = ans;
+      }
+    </script>
+  </body>
+</html>

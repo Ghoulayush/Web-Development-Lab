@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calendar</title>
+    <style>
+      body {
+        font-family: Arial;
+        background-color: white;
+        padding: 20px;
+      }
+
+      .container {
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border: 1px solid black;
+        width: 600px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .controls {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      label {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      select {
+        padding: 5px;
+        border: 1px solid black;
+        margin-right: 15px;
+      }
+
+      button {
+        padding: 5px 15px;
+        background-color: green;
+        color: white;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+
+      .calendar-header {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .calendar {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+
+      .calendar th {
+        background-color: gray;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid black;
+      }
+
+      .calendar td {
+        width: 14.285%;
+        height: 70px;
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+        vertical-align: top;
+        background-color: white;
+      }
+
+      .calendar .other-month {
+        color: #999;
+        background-color: #f0f0f0;
+      }
+
+      .calendar .today {
+        background-color: yellow;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calendar</h1>
+
+      <div class="controls">
+        <label for="monthSelect">Month:</label>
+        <select id="monthSelect" onchange="displayCalendar()">
+          <option value="0">January</option>
+          <option value="1">February</option>
+          <option value="2">March</option>
+          <option value="3">April</option>
+          <option value="4">May</option>
+          <option value="5">June</option>
+          <option value="6">July</option>
+          <option value="7">August</option>
+          <option value="8">September</option>
+          <option value="9">October</option>
+          <option value="10">November</option>
+          <option value="11">December</option>
+        </select>
+
+        <label for="yearSelect">Year:</label>
+        <select id="yearSelect" onchange="displayCalendar()"></select>
+      </div>
+
+      <div class="calendar-header" id="calendarHeader">January 2024</div>
+
+      <table class="calendar" id="calendarTable">
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendarBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      function populateYears() {
+        var y = document.getElementById("yearSelect"),
+          c = new Date().getFullYear();
+        for (var i = 1990; i <= 2050; i++) {
+          var o = document.createElement("option");
+          o.value = o.text = i;
+          if (i === c) o.selected = true;
+          y.appendChild(o);
+        }
+      }
+
+      function displayCalendar() {
+        var m = parseInt(document.getElementById("monthSelect").value),
+          y = parseInt(document.getElementById("yearSelect").value),
+          f = new Date(y, m, 1).getDay(),
+          d = 1,
+          p = new Date(y, m, 0).getDate() - f + 1,
+          n = 1;
+        var months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        document.getElementById("calendarHeader").innerHTML =
+          months[m] + " " + y;
+        var body = document.getElementById("calendarBody");
+        body.innerHTML = "";
+        var days = new Date(y, m + 1, 0).getDate();
+        for (var i = 0; i < 6; i++) {
+          var row = document.createElement("tr");
+          for (var j = 0; j < 7; j++) {
+            var cell = document.createElement("td");
+            if (i === 0 && j < f) {
+              cell.innerHTML = p++;
+              cell.classList.add("other-month");
+            } else if (d <= days) {
+              cell.innerHTML = d;
+              if (
+                d === new Date().getDate() &&
+                m === new Date().getMonth() &&
+                y === new Date().getFullYear()
+              )
+                cell.classList.add("today");
+              d++;
+            } else {
+              cell.innerHTML = n++;
+              cell.classList.add("other-month");
+            }
+            row.appendChild(cell);
+          }
+          body.appendChild(row);
+          if (d > days && n > 1 && i > 3) break;
+        }
+      }
+
+      window.addEventListener("load", function () {
+        populateYears();
+        displayCalendar();
+      });
+    </script>
+  </body>
+</html>

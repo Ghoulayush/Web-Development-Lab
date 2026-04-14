@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program IV</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        width: 500px;
+      }
+      button {
+        padding: 5px 10px;
+        margin-top: 5px;
+        border: 1px solid black;
+        background: lightgray;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program IV</h2>
+    <div class="box">
+      <p>Difference between two dates in days</p>
+      <button onclick="runTest()">Run Test</button>
+      <pre id="result"></pre>
+    </div>
+
+    <script>
+      function date_diff_indays(d1, d2) {
+        var a = new Date(d1);
+        var b = new Date(d2);
+        var t = 24 * 60 * 60 * 1000;
+        return Math.round((b - a) / t);
+      }
+
+      function runTest() {
+        var r1 = date_diff_indays("04/02/2014", "11/04/2014");
+        var r2 = date_diff_indays("12/02/2014", "11/04/2014");
+        document.getElementById("result").innerHTML = r1 + "\n" + r2;
+        console.log(r1);
+        console.log(r2);
+      }
+    </script>
+  </body>
+</html>

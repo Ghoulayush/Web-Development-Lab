@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program I</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        margin-bottom: 20px;
+        width: 420px;
+      }
+      input,
+      button {
+        padding: 5px;
+        margin-top: 5px;
+      }
+      button {
+        border: 1px solid black;
+        background: lightgray;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program I</h2>
+
+    <div class="box">
+      <p>Find left-most vowel position</p>
+      <input type="text" id="strInput" />
+      <button onclick="findVowel()">Find</button>
+      <p id="vowelResult"></p>
+    </div>
+
+    <div class="box">
+      <p>Reverse digits of a number</p>
+      <input type="number" id="numInput" />
+      <button onclick="reverseNumber()">Reverse</button>
+      <p id="reverseResult"></p>
+    </div>
+
+    <script>
+      function findVowel() {
+        var s = document.getElementById("strInput").value.toLowerCase();
+        var v = "aeiou";
+        var pos = -1;
+        for (var i = 0; i < s.length; i++) {
+          if (v.indexOf(s[i]) !== -1) {
+            pos = i + 1;
+            break;
+          }
+        }
+        document.getElementById("vowelResult").innerHTML =
+          pos === -1 ? "No vowel found" : "Position: " + pos;
+      }
+
+      function reverseNumber() {
+        var n = document.getElementById("numInput").value;
+        if (n === "") {
+          document.getElementById("reverseResult").innerHTML = "Enter a number";
+          return;
+        }
+        var sign = n < 0 ? -1 : 1;
+        n = Math.abs(parseInt(n));
+        var rev = parseInt(n.toString().split("").reverse().join(""));
+        document.getElementById("reverseResult").innerHTML =
+          "Reverse: " + sign * rev;
+      }
+    </script>
+  </body>
+</html>

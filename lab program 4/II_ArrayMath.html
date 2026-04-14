@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program II</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        margin-bottom: 20px;
+        width: 420px;
+      }
+      button {
+        padding: 5px 10px;
+        margin-top: 5px;
+        border: 1px solid black;
+        background: lightgray;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program II</h2>
+
+    <div class="box">
+      <p>Array object</p>
+      <button onclick="showArray()">Show Array Result</button>
+      <p id="arrayResult"></p>
+    </div>
+
+    <div class="box">
+      <p>Math object</p>
+      <button onclick="showMath()">Show Math Result</button>
+      <p id="mathResult"></p>
+    </div>
+
+    <script>
+      function showArray() {
+        var a = [10, 20, 30, 40];
+        a.push(50);
+        a.pop();
+        document.getElementById("arrayResult").innerHTML =
+          "Array: " + a.join(", ") + " | Length: " + a.length;
+      }
+
+      function showMath() {
+        var n = 25.67;
+        var r = Math.round(n);
+        var c = Math.ceil(n);
+        var f = Math.floor(n);
+        document.getElementById("mathResult").innerHTML =
+          "Round: " +
+          r +
+          ", Ceil: " +
+          c +
+          ", Floor: " +
+          f +
+          ", Sqrt(25): " +
+          Math.sqrt(25);
+      }
+    </script>
+  </body>
+</html>

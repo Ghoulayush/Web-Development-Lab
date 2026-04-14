@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 4 - Program V</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        border: 1px solid black;
+        padding: 15px;
+        width: 420px;
+      }
+      button {
+        padding: 5px 10px;
+        margin-top: 5px;
+        border: 1px solid black;
+        background: lightgray;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Program V</h2>
+    <div class="box">
+      <p>Count days passed since beginning of the year</p>
+      <button onclick="runTest()">Run Test</button>
+      <pre id="result"></pre>
+    </div>
+
+    <script>
+      function days_passed(date) {
+        var start = new Date(date.getFullYear(), 0, 0);
+        var diff = date - start;
+        var oneDay = 1000 * 60 * 60 * 24;
+        return Math.floor(diff / oneDay);
+      }
+
+      function runTest() {
+        var a = days_passed(new Date(2015, 0, 15));
+        var b = days_passed(new Date(2015, 11, 14));
+        document.getElementById("result").innerHTML = a + "\n" + b;
+        console.log(a);
+        console.log(b);
+      }
+    </script>
+  </body>
+</html>
