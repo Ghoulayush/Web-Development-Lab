@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function findSunday(year1, year2) {
+    for (let year = year1; year <= year2; year++) {
+        let date = new Date(year, 0, 1); // Jan 1 of that year
+
+        if (date.getDay() === 0) { // 0 = Sunday
+            console.log("1st January is Sunday in year:", year);
+        }
+    }
+}
+
+// Example
+findSunday(2000, 2025);
+  </script>
+</body>
+</html>
