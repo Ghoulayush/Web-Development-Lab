@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>calendar</h1>
+
+    <select name="month" id="month">
+      <option value="0">Jan</option>
+      <option value="1">feb</option>
+      <option value="2">mar</option>
+      <option value="3">apr</option>
+      <option value="4">may</option>
+      <option value="5">jun</option>
+      <option value="6">July</option>
+      <option value="7">aug</option>
+      <option value="8">sep</option>
+      <option value="9">oct</option>
+      <option value="10">nov</option>
+      <option value="11">dec</option>
+    </select>
+
+    <select name="year" id="year">
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+    </select>
+
+    <button onclick="show()">show</button>
+
+    <div id="output"></div>
+
+    <script>
+      function show(){
+        let month=document.getElementById("month").value;
+        let year=document.getElementById("year").value;
+
+        let first=new Date(year,month,1).getDay(); //0-sun 1-mon
+        let total=new Date(year,month+1,0).getDate();
+
+        let table=`<table>`;
+          table+=`
+              <tr> 
+                 <th>sun</th>
+                 <th>mon</th>
+                 <th>tue</th>
+                 <th>wed</th>
+                 <th>thur</th>
+                 <th>fri</th>
+                 <th>sat</th>
+              </tr>
+          `;
+
+          let date=1;
+
+          for(let i=0;i<6;i++){
+            table+="<tr>";
+              for(let j=0;j<7;j++){
+                if(i==0&&j<first){
+                  table+="<td></td>";
+                }else if(date>total){
+                  break;
+                }else{
+                  table+="<td>"+date+"</td>";
+                  date++;
+                }
+              }
+              table+="</tr>"
+          }
+          table+=`</table>`
+
+          document.getElementById("output").innerHTML=table;
+
+      }
+    </script>
+  </body>
+</html>

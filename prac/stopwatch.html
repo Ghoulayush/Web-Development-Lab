@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>stopwatch</h1>
+
+    <h2 id="time">00:00:00</h2>
+
+    <button onclick="start()">START</button>
+    <button onclick="pause()">PAUSE</button>
+    <button onclick="reset()">RESET</button>
+
+    <script>
+      let seconds=0;
+      let timer=null;
+
+      function updateDisplay(){
+        //getting seconds into hrs and mins
+        let hrs=Math.floor(seconds/3600);
+        let mins=Math.floor((seconds%3600)/60);
+        let secs=seconds%60;
+
+        //formatting to 0 to 00
+        document.getElementById("time").innerHTML=  
+           String(hrs).padStart(2,'0')+":"+
+           String(mins).padStart(2,'0')+":"+
+           String(secs).padStart(2,'0');
+      }
+
+      function start(){
+          if(timer!=null) return;
+
+          timer=setInterval(function(){
+            seconds++;
+            updateDisplay();
+          },1000);
+      }
+        function pause(){
+          clearInterval(timer);
+        }
+
+        function reset(){
+          clearInterval(timer);
+          timer=null;
+          seconds=0;
+          updateDisplay();
+        }
+    </script>
+  </body>
+</html>

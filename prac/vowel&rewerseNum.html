@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>string and number</h1>
+
+    <p>enter the string</p>
+    <input type="text" id="str">
+    <button onclick="vowel()">find left most vowel</button>
+    <p id="result1"></p>
+
+    <p>enter a number</p>
+    <input type="number" id="num">
+    <button onclick="reversenum()">reverse number</button>
+    <p id="result"></p>
+
+    <script>
+      function vowel(){
+        let str=document.getElementById("str").value;
+        let vowels="aeiouAEIOU";
+
+        for(let i=0;i<str.length;i++){
+          if(vowels.includes(str[i])){
+            document.getElementById("result1").innerHTML="First Vowel at position:"+(i+1);
+            return;
+          }
+        }
+        document.getElementById("result1").innerHTML="no vowel found";
+      }
+
+      function reversenum(){
+        let num=document.getElementById("num").value;
+        let reversed=num.split("").reverse().join("");
+
+        document.getElementById("result").innerHTML="Reversed number"+reversed;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>day & date</h1>
+    <p id="output"></p>
+    <button onclick="check()">check</button>
+    <script>
+      function check(){
+        let now=new Date();
+
+        let days=["sunday",
+        "monday",
+        "tue",
+        "wed",
+        "thur",
+        "fri",
+        "sat"];
+
+        let day=days[now.getDay()];
+        let hour=now.getHours();
+        let minutes=now.getMinutes();
+        let second=now.getSeconds();
+
+        let period=(hour>=12)?"pm":"am";
+
+        hour=hour%12;
+        if(hour===0) hour=12;
+
+        document.getElementById("output").innerHTML=
+          "today is"+day+"<br> "+
+          "the current time: "+hour+" "+period+":"+minutes+":"+second;
+      }
+    </script>
+  </body>
+</html>
