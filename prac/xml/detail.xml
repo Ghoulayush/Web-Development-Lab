@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/css" href="style.css"?>
+
+<university>
+    
+    <student>
+        <name>Achyut Shekhar Singh</name>
+        <branch>CSE</branch>
+        <yearOfJoining>2023</yearOfJoining>
+        <email>achyut@gmail.com</email>
+    </student>
+
+    <student>
+        <name>Anshika Nautiyal</name>
+        <branch>IT</branch>
+        <yearOfJoining>2022</yearOfJoining>
+        <email>anshika@gmail.com</email>
+    </student>
+
+    <student>
+        <name>Yashaseen Verma</name>
+        <branch>ECE</branch>
+        <yearOfJoining>2023</yearOfJoining>
+        <email>yashaseen@gmail.com</email>
+    </student>
+
+</university>
+  
